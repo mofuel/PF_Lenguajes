@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+PyMySQL
+Flask-Cors
+Flask-JWT-Extended
+passlib[bcrypt]
+python-dotenv
