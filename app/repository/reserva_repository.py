@@ -14,3 +14,6 @@ def obtener_reserva_por_id(reserva_id: int):
 def eliminar_reserva(reserva: Reserva):
     db.session.delete(reserva)
     db.session.commit()
+
+def obtener_todas_reservas():
+    return Reserva.query.all()

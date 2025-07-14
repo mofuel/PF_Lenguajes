@@ -1,0 +1,22 @@
+#usuarios-admin {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+#usuarios-admin h2 {
+  font-weight: 600;
+  color: #333;
+}
+
+#usuarios-admin table {
+  font-size: 0.95rem;
+}
+
+#usuarios-admin .btn-success {
+  font-size: 0.9rem;
+  padding: 0.45rem 1.1rem;
+}

@@ -2,7 +2,8 @@ from app.model.usuario import Usuario
 from app.repository.usuario_repository import (
     guardar_usuario,
     obtener_usuario_por_correo,
-    obtener_usuario_por_dni
+    obtener_usuario_por_dni,
+    obtener_todos_los_usuarios
 )
 
 def registrar_usuario(data):
@@ -37,3 +38,9 @@ def registrar_usuario(data):
     # Guardar en la base de datos
     guardar_usuario(nuevo_usuario)
     return nuevo_usuario
+
+def listar_usuarios():
+    return obtener_todos_los_usuarios()
+
+def obtener_usuario_por_id(id):
+    return Usuario.query.get(id)

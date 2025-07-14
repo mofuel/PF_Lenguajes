@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2980b9;
+    color: white;
+    padding: 15px;
+    height: 100vh; /* Asegura que la barra lateral ocupe toda la altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Estilo para el dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background-color: #34495e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+}
+
+/* Estilo para las opciones dentro del dropdown */
+.dropdown-menu {
+    display: none; /* Ocultar las opciones por defecto */
+    position: absolute;
+    background-color: #34495e;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Efecto hover para las opciones dentro del dropdown */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #3498db;
+}
+
+/* Mostrar el dropdown al hacer clic */
+.dropdown.show .dropdown-menu {
+    display: block;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0; /* Aumentar el margen entre los elementos de la lista */
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px; /* Añadir padding para mejorar el espacio alrededor del texto */
+    display: block; /* Asegura que el enlace ocupe todo el área del li */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición para el cambio de fondo */
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo en hover para mejor visibilidad */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es mayor que la altura */
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.search-add-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Mover al lado derecho */
+    margin-bottom: 20px;
+}
+
+.search-add-bar input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    margin-right: 10px; /* Espacio entre el input y el botón */
+}
+
+.search-add-bar a,.search-add-bar button {
+    margin-right: 10px; /* Añade espacio de 10px entre los botones */
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición al hacer hover */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #bdc3c7;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.seccion h2 {
+    margin-top: 30px; /* Aumenta este valor para más espacio */
+    margin-bottom: 10px; /* Espacio entre el título y la tabla */
+    font-size: 24px; /* Aumenta el tamaño del texto si es necesario */
+}
+.nosotros-section {
+            text-align: center;
+            padding: 50px;
+            color: black; /* Color de las letras cambiado a negro */
+            background-image: url('img/estacio.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #00bfff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+        }
+
+        .card-icon i {
+            font-size: 40px;
+            color: white;
+        }
+
+        .mission-vision {
+            margin: 40px 0;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+/* Ocultar el formulario inicialmente */
+#formularioReserva {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Estilo para el formulario de reserva */
+#formularioReserva table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#formularioReserva label {
+    font-weight: bold;
+}
+
+#formularioReserva input,
+#formularioReserva select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+#formularioReserva button {
+    width: 100%;
+}
+
+/* Espaciado entre el texto y los elementos del formulario */
+#formularioReserva td {
+    padding: 10px;
+}

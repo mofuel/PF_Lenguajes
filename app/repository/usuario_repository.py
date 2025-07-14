@@ -13,3 +13,7 @@ def obtener_usuario_por_dni(dni: str):
 
 def obtener_usuario_por_id(user_id: int):
     return Usuario.query.get(user_id)
+
+def obtener_todos_los_usuarios():
+    return Usuario.query.all()
+

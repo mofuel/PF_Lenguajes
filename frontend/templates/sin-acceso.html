@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)" xmlns:sec="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+    <title>Acceso Denegado</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="../static/img/logoact.png" alt="Logo" class="log">
+
+            <!-- Aquí va el mensaje de bienvenida (se llenará con JS) -->
+            <span id="mensaje-usuario" class="navbar-text ms-3 text-white"></span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- Solo se muestra si NO está autenticado -->
+                    <li class="nav-item" id="link-login">
+                        <a class="nav-link" href="../templates/login.html">Iniciar sesión</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mapa">Mapa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/reservas">Reservas</a>
+                    </li>
+
+
+
+                    <!-- Menú para cliente (solo si está autenticado y tiene rol cliente) -->
+                    <li class="nav-item dropdown d-none" id="menu-cliente">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Cliente
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../templates/perfilcli">Perfil</a></li>
+                            <li><a class="dropdown-item" href="../templates/orders">Reservas</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Menú para admin (solo si tiene rol admin) -->
+                    <li class="nav-item dropdown d-none" id="menu-admin">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Administrador
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../templates/profile">Perfil</a></li>
+                            <li><a class="dropdown-item" href="../templates/configuration">Configuraciones</a></li>
+                            <li><a class="dropdown-item" href="../templates/details">Detalles</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <div class="text-center">
+        <h1 class="text-danger">⚠️ Acceso Denegado</h1>
+        <p>No tienes permisos para acceder a esta página.</p>
+        <a href="../templates/index.html" class="btn btn-primary mt-3">Volver al inicio</a>
+    </div>
+
+
+
+
+
+
+    <footer id="footer">
+    </footer>
+
+
+
+
+
+    <script src="../static/js/carga.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

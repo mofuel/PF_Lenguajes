@@ -1,0 +1,25 @@
+#formulario-reserva {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto; /* centrado horizontal */
+}
+
+#formulario-reserva h2 {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+#formulario-reserva .form-control,
+#formulario-reserva .form-select {
+  font-size: 0.95rem;
+  padding: 0.45rem 0.75rem;
+}
+
+#formulario-reserva .btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/usuarios.css" />
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <img src="../static/img/logoact.png" alt="Logo" class="log" />
+
+            <!-- Aquí va el mensaje de bienvenida (se llenará con JS) -->
+            <span id="mensaje-usuario" class="navbar-text ms-3 text-white"></span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item" id="link-login">
+                        <a class="nav-link" href="login.html">Iniciar sesión</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuarios.html">Usuarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/plazas.html">Estacionamiento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mapa">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mapa">Reporte</a>
+                    </li>
+
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4" id="usuarios-admin">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Usuarios registrados</h2>
+            <button class="btn btn-success" id="btn-agregar">Agregar Usuario</button>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>DNI</th>
+                    <th>Teléfono</th>
+                    <th>Rol</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-usuarios"></tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Modal: Registrar Usuario -->
+    <div class="modal fade" id="modalRegistrarUsuario" tabindex="-1" aria-labelledby="modalRegistrarUsuarioLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formRegistrarUsuario">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registrar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control mb-2" placeholder="Nombre" name="nombre" required>
+                        <input type="text" class="form-control mb-2" placeholder="Apellido" name="apellido" required>
+                        <input type="text" class="form-control mb-2" placeholder="DNI" name="dni" required>
+                        <input type="text" class="form-control mb-2" placeholder="Teléfono" name="telefono" required>
+                        <input type="email" class="form-control mb-2" placeholder="Correo" name="correo" required>
+                        <input type="password" class="form-control mb-2" placeholder="Contraseña" name="password"
+                            required>
+                        <input type="password" class="form-control mb-2" placeholder="Confirmar Contraseña"
+                            name="confirm_password" required>
+                        <select class="form-select mb-2" name="rol" required>
+                            <option value="" disabled selected>Selecciona un rol</option>
+                            <option value="admin">Admin</option>
+                            <option value="usuario">Usuario</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Modal: Editar Usuario -->
+    <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formEditarUsuario">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Campo oculto para ID -->
+                        <input type="hidden" name="id">
+                        <input type="text" class="form-control mb-2" placeholder="Nombre" name="nombre" required>
+                        <input type="text" class="form-control mb-2" placeholder="Apellido" name="apellido" required>
+                        <input type="text" class="form-control mb-2" placeholder="DNI" name="dni" required>
+                        <input type="text" class="form-control mb-2" placeholder="Teléfono" name="telefono" required>
+                        <input type="email" class="form-control mb-2" placeholder="Correo" name="correo" required>
+                        <select class="form-select mb-2" name="rol" required>
+                            <option value="admin">Admin</option>
+                            <option value="usuario">Usuario</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer id="footer">
+    </footer>
+
+
+
+
+
+    <script src="../static/js/carga.js"></script>
+    <script src="../static/js/acceso.js"></script>
+    <script src="../static/js/usuarios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

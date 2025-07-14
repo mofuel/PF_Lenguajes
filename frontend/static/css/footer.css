@@ -1,0 +1,192 @@
+
+
+/* Asegura que el body ocupe toda la altura de la pantalla y sea flexible */
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Mantiene el footer al fondo */
+  margin: 0;
+  font-family: sans-serif; /* Establece la fuente predeterminada */
+}
+
+/* Estilo del main */
+main {
+  flex: 1; /* Permite que el main ocupe el espacio restante */
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  padding: 20px; /* Espaciado interno adicional */
+  text-align: center;
+}
+
+#footer {
+  text-align: center;
+  margin-top: auto; /* Empuja el footer al final */
+}
+
+/* Estilo del footer */
+.footer-distributed {
+  background-color: #020202; /* Color de fondo del footer */
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 20px; /* Ajustado para ser más pequeño */
+}
+
+/* Estilo de las secciones del footer */
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-distributed .footer-left {
+  width: 30%;
+}
+
+.footer-distributed h3 {
+  color: #ffffff; /* Color del título */
+  font: normal 36px "Cookie", cursive;
+  margin: 0;
+}
+
+.footer-distributed .footer-links {
+  color: #ffffff; /* Color de los enlaces */
+  margin: 20px 0 12px;
+}
+
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit; /* Hereda el color */
+}
+
+.footer-distributed .footer-links a:hover {
+  color: #ffffff; /* Color de enlace al pasar el ratón */
+}
+
+.footer-distributed .footer-company-name {
+  color: #8f9296; /* Color de la compañía */
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-center {
+  width: 35%;
+}
+
+.footer-distributed .footer-center i {
+  background-color: #33383b; /* Color de fondo de los íconos */
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center p {
+  display: inline-block;
+  color: #ffffff; /* Color del texto */
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+  color: #ffffff; /* Color de los enlaces en el footer */
+  text-decoration: none;
+}
+
+.footer-distributed .footer-right {
+  width: 30%;
+}
+
+.footer-distributed .footer-right .footer-company-about {
+  line-height: 20px;
+  color: #ffffff; /* Color del texto */
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-right .footer-company-about span {
+  display: block;
+  color: #ffffff; /* Color del texto */
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-right .footer-icons {
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-right .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b; /* Color de fondo de los íconos */
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff; /* Color de los íconos */
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+.footer-distributed .footer-right .footer-icons a:hover {
+  background-color: #3fe20d; /* Color al pasar el ratón */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 880px) {
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-left {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+}

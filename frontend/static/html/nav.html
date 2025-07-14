@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+    <img src="../static/img/logoact.png" alt="Logo" class="log" height="50">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto" id="nav-left">
+        <li class="nav-item" id="login-link">
+          <a class="nav-link" href="/templates/login.html">Iniciar sesión</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto" id="nav-right">
+        <li class="nav-item"><a class="nav-link" href="../static/templates/index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
+        <li class="nav-item"><a class="nav-link" href="/templates/reservas.html">Reservas</a></li>
+        <li class="nav-item"><a class="nav-link" href="/templates/recompensas.html">Recompensas</a></li>
+        <li class="nav-item"><a class="nav-link" href="/templates/nosotros.html">Nosotros</a></li>
+
+        <!-- Dropdown administrador -->
+        <li class="nav-item dropdown d-none" id="admin-menu">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrador</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/templates/profile.html">Perfil</a></li>
+            <li><a class="dropdown-item" href="/templates/config.html">Configuración</a></li>
+            <li><a class="dropdown-item" href="/templates/detalles.html">Detalles</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown cliente -->
+        <li class="nav-item dropdown d-none" id="cliente-menu">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Cliente</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/templates/perfilcli.html">Perfil</a></li>
+            <li><a class="dropdown-item" href="/templates/orders.html">Órdenes</a></li>
+          </ul>
+        </li>
+
+        <!-- Logout -->
+        <li class="nav-item d-none" id="logout-button">
+          <button class="btn btn-danger nav-link" onclick="logout()">Cerrar sesión</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

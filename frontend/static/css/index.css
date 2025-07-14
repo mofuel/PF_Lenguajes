@@ -1,0 +1,84 @@
+
+.img-of {
+  width: 60px;
+  height: 60px;
+}
+.hover-shadow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-shadow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  padding-top: 80px;
+  padding-bottom: 50px;
+  min-height: 400px;
+  position: relative;
+  background: url('../img/estacio.PNG') no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Capa oscura con opacidad */
+  z-index: 1;
+}
+.info .info-content,
+.info .btn-container {
+  position: relative;
+  z-index: 2;
+  /* Coloca el contenido por encima de la capa oscura */
+}
+.info .info-content {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.info .btn-container {
+  display: flex;
+  gap: 20px;
+}
+.info .btn-container button {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.info .btn-container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+}
+.info .btn-container button:hover {
+  background-color: #333333;
+}
+.h1 {
+  font-weight: 600;
+}
+body {
+  background-color: #666666;
+}
