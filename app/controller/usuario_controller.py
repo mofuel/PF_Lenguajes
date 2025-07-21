@@ -1,14 +1,13 @@
+# Importaciones necesarias
 from flask import Blueprint, request, jsonify
-from app.service.usuario_service import registrar_usuario
-from flask_jwt_extended import create_access_token
-from app.repository.usuario_repository import obtener_usuario_por_correo
-from app.service.usuario_service import listar_usuarios
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.repository.usuario_repository import obtener_usuario_por_id
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from app.service.usuario_service import registrar_usuario, listar_usuarios
+from app.repository.usuario_repository import obtener_usuario_por_correo, obtener_usuario_por_id
 
-
+# Se define el blueprint de rutas de usuario
 usuario_bp = Blueprint("usuario", __name__)
 
+# ✅ POST /registro - Registro de nuevo usuario
 @usuario_bp.route("/registro", methods=["POST"])
 def registro():
     try:
@@ -18,37 +17,26 @@ def registro():
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
+# ✅ POST /login - Inicio de sesión y generación de JWT
 @usuario_bp.route("/login", methods=["POST"])
 def login():
     data = request.json
     correo = data.get("correo")
     contrasena = data.get("password")
 
-    print("📥 Datos recibidos:", correo, contrasena)
-
     usuario = obtener_usuario_por_correo(correo)
-    print("🔍 Usuario encontrado:", usuario)
-
-    if not usuario:
-        print("❌ Usuario no encontrado.")
+    if not usuario or not usuario.check_password(contrasena):
         return jsonify({"error": "Correo o contraseña incorrectos."}), 401
 
-    if not usuario.check_password(contrasena):
-        print("❌ Contraseña incorrecta.")
-        return jsonify({"error": "Correo o contraseña incorrectos."}), 401
-
-    print("✅ Usuario autenticado correctamente.")
-
+    # Generar token con el ID del usuario
     token = create_access_token(identity=str(usuario.id))
-    print("🎟️ Token generado:", token)
-
     return jsonify({
         "access_token": token,
-        "nombre": usuario.nombre,  # o usuario.username, si lo usas así
-        "rol": usuario.rol         # si usas roles
+        "nombre": usuario.nombre,
+        "rol": usuario.rol
     }), 200
 
-
+# ✅ GET /listar - Listar todos los usuarios (solo admin)
 @usuario_bp.route("/listar", methods=["GET"])
 @jwt_required()
 def listar():
@@ -73,7 +61,7 @@ def listar():
     ]
     return jsonify(resultado), 200
 
-
+# ✅ PUT /<usuario_id> - Editar usuario (solo admin)
 @usuario_bp.route("/<int:usuario_id>", methods=["PUT"])
 @jwt_required()
 def editar(usuario_id):
@@ -87,6 +75,7 @@ def editar(usuario_id):
     if not usuario:
         return jsonify({"error": "Usuario no encontrado"}), 404
 
+    # Actualizar campos recibidos
     data = request.json
     usuario.nombre = data.get("nombre", usuario.nombre)
     usuario.apellido = data.get("apellido", usuario.apellido)
@@ -100,6 +89,7 @@ def editar(usuario_id):
 
     return jsonify({"mensaje": "Usuario actualizado correctamente"}), 200
 
+# ✅ DELETE /<usuario_id> - Eliminar usuario (solo admin)
 @usuario_bp.route("/<int:usuario_id>", methods=["DELETE"])
 @jwt_required()
 def eliminar(usuario_id):
@@ -118,4 +108,3 @@ def eliminar(usuario_id):
     db.session.commit()
 
     return jsonify({"mensaje": "Usuario eliminado correctamente"}), 200
-

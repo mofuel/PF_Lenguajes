@@ -1,5 +1,5 @@
 document.getElementById("form-registro").addEventListener("submit", async function (e) {
-  e.preventDefault();
+  e.preventDefault(); // 🔸 Evita que el formulario recargue la página
 
   const form = e.target;
 
@@ -14,6 +14,7 @@ document.getElementById("form-registro").addEventListener("submit", async functi
   };
 
   try {
+    // 🔽 Enviar los datos al backend
     const res = await fetch("http://localhost:5000/api/usuario/registro", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -21,19 +22,25 @@ document.getElementById("form-registro").addEventListener("submit", async functi
     });
 
     const result = await res.json();
-    const alerta = document.getElementById("alerta");
+    const alerta = document.getElementById("alerta"); // 🔽 Contenedor para mostrar mensajes
 
     if (res.ok) {
+      // ✅ Registro exitoso
       alerta.innerHTML = `<div class="alert alert-success">${result.mensaje}</div>`;
       form.reset();
+
+      // 🔽 Redirigir al login después de un breve mensaje
       setTimeout(() => {
-        window.location.href = "login.html"; // Redirige al login si quieres
+        window.location.href = "login.html";
       }, 1500);
     } else {
+      // ❌ Error en el registro
       alerta.innerHTML = `<div class="alert alert-danger">${result.error}</div>`;
     }
   } catch (error) {
     console.error("Error:", error);
-    document.getElementById("alerta").innerHTML = `<div class="alert alert-danger">Error al conectar con el servidor.</div>`;
+    // ❌ Error de conexión
+    document.getElementById("alerta").innerHTML = 
+      `<div class="alert alert-danger">Error al conectar con el servidor.</div>`;
   }
 });

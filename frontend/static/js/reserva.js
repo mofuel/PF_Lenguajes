@@ -20,16 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
       fecha_fin: document.getElementById("fecha_fin").value
     };
 
-    console.log("🔍 Datos a enviar:", data);
-
-    // ⚠️ Validar campos vacíos (opcional)
+    // 🔸 Validar campos vacíos
     if (!data.plaza || !data.placa || !data.fecha_inicio || !data.fecha_fin) {
       alerta.innerHTML = `<div class="alert alert-warning">Todos los campos son obligatorios.</div>`;
       return;
     }
 
-    // ✅ Paso 1: Verificar si la plaza está ocupada
     try {
+      // 🔍 Verificar disponibilidad de plaza
       const checkRes = await fetch(`http://localhost:5000/api/verificar-plaza`, {
         method: "POST",
         headers: {
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // ✅ Paso 2: Si está libre, registrar la reserva
+      // ✅ Registrar reserva si la plaza está libre
       const res = await fetch("http://localhost:5000/api/reservar", {
         method: "POST",
         headers: {
@@ -69,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alerta.innerHTML = `<div class="alert alert-danger">${result.error || "Error en la reserva."}</div>`;
       }
     } catch (error) {
+      // ❌ Error al comunicarse con el servidor
       alerta.innerHTML = `<div class="alert alert-danger">Error de conexión con el servidor.</div>`;
       console.error("Error:", error);
     }
